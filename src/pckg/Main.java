@@ -1,5 +1,6 @@
 package pckg;
 
+import pckg.workers.ChapterMan;
 import pckg.workers.ParagraphMan;
 
 import java.io.File;
@@ -15,10 +16,16 @@ public class Main {
         System.out.println("necum");
         try {
             String content = new String(Files.readAllBytes(Paths.get(args[0])), StandardCharsets.UTF_8);
-            ParagraphMan pm = new ParagraphMan(null, "pm1", content);
-            pm.run();
+//            ParagraphMan pm = new ParagraphMan(null, "pm1", content);
+            ChapterMan cm = new ChapterMan(null, "pm1", content);
+            Thread t = new Thread(cm);
+            t.start();
+            t.join();
         } catch (IOException e) {
             System.out.println("Couldn't read the file. Shutting down.");
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            System.out.println("Could not join");
             e.printStackTrace();
         }
     }

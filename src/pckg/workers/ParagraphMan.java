@@ -2,45 +2,51 @@ package pckg.workers;
 
 public class ParagraphMan extends AWorker {
 
-    public ParagraphMan(AWorker chapterMan, String filename, String text) {
+    ParagraphMan(AWorker chapterMan, String filename, String text) {
         super(chapterMan, filename, text);
+//        log(text);
     }
 
     @Override
-    public void run() {
-        while(Res.thread_count >= Res.THREAD_LIMIT){ //TODO osetri pocitani vlaken
-            try {
-                wait(Res.WAIT_MILIS);
-            } catch (InterruptedException e) {
-                log("could not wait");
-                e.printStackTrace();
-            }
-        }
+    public synchronized void run() {
         log("started working");
-        Res.thread_count++;
-        process_text();
-//        this.upper.send_result(this.result_map);
-        Res.print_map(this.result_map);
+//        Res.thread_count_paragraphman++;
+//
+//        while(Res.process_text_paragraphman_running){
+//            try {
+//                wait(Res.WAIT_MILIS);
+//            } catch (InterruptedException e) {
+//                log("could not wait");
+//                e.printStackTrace();
+//            }
+//        }
+            process_text();
+//            Res.print_map(this.result_map);
+//        while(this.upper.receive_text_running){
+//            try {
+//                wait(Res.WAIT_MILIS);
+//            } catch (InterruptedException e) {
+//                log("could not wait");
+//                e.printStackTrace();
+//            }
+//        }
+            this.upper.receive_result(this.result_map, this);
+
+
+//        Res.thread_count_paragraphman--;
+            log("finished working");
     }
 
     @Override
     protected void process_text() {
-        while(Res.process_text_running){
-            try {
-                wait(Res.WAIT_MILIS);
-            } catch (InterruptedException e) {
-                log("could not wait");
-                e.printStackTrace();
-            }
-        }
-        Res.process_text_running = true;
-        String[] text_arr = text.split("[,. \"”“]+");
+//        Res.process_text_paragraphman_running = true;
+        String[] text_arr = text.split("[,. \"”“]+|(\\r?\\n)");
         for (String word : text_arr){
             String w = word.toLowerCase();
             int count = this.result_map.getOrDefault(w, 0);
             this.result_map.put(w, count + 1);
         }
-        Res.process_text_running = false;
+//        Res.process_text_paragraphman_running = false;
     }
 
  /*   public void compute() {

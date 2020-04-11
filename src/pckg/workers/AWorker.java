@@ -3,10 +3,14 @@ package pckg.workers;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.Map;
 
 abstract class AWorker implements Runnable{
 
     HashMap<String, Integer> result_map;
+    protected int thread_count = 0;
+    protected boolean receive_text_running = false;
+    protected static final int THREAD_LIMIT = 5;
 
     /**his boss*/
     AWorker upper;
@@ -17,7 +21,7 @@ abstract class AWorker implements Runnable{
      * including the result being written to result_map*/
     protected abstract void process_text();
 
-    public AWorker(AWorker upper, String filename, String text) {
+    AWorker(AWorker upper, String filename, String text) {
         this.upper = upper;
         this.filename = filename;
         this.text = text;
@@ -47,15 +51,38 @@ abstract class AWorker implements Runnable{
         return this.getClass().getSimpleName() + " " + this.filename + ": ";
     }
 
-    void send_result(HashMap<String, Integer> result_map) {
-        if(this.upper == null || result_map == null){
-            log("send_result unsuccessful, returning");
+    synchronized void receive_result(HashMap<String, Integer> map, AWorker aw) {
+        this.receive_text_running = true;
+        log("receiving message from" + aw.toString());
+        if(map == null){
+            err_log(" receive_result unsuccessful");
             return;
         }
-        //TODO pokracuj, co se deje pri posilani hotovych dat vyse
+        synchronized (aw) {
+            /*merging maps*/
+            for (Map.Entry<String, Integer> entry : map.entrySet()) {
+                String key = entry.getKey(); //TODO mozna pridej lowercase
+                int count = result_map.getOrDefault(key, 0);
+                result_map.put(key, count + entry.getValue());
+            }
+        }
+
+        /*finish the whole work*/
+        if(this.thread_count == 0) {
+            if (this.upper == null) {
+                Res.print_map(this.result_map);
+            } else {
+                this.upper.receive_result(this.result_map, this);
+            }
+        }
+        log("message received from" + aw.toString());
+        this.receive_text_running = false;
     }
 
     void log(String s){
         System.out.println("Log: " + this.toString() + " " + s);
+    }
+    private void err_log(String s){
+        System.err.println("Log: " + this.toString() + " " + s);
     }
 }
