@@ -1,6 +1,7 @@
 package pckg.workers;
 
-import java.util.ArrayList;
+import pckg.Res;
+
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
@@ -66,17 +67,21 @@ abstract class AWorker implements Runnable{
                 result_map.put(key, count + entry.getValue());
             }
         }
-
-        /*finish the whole work*/
-        if(this.thread_count == 0) {
-            if (this.upper == null) {
-                Res.print_map(this.result_map);
-            } else {
-                this.upper.receive_result(this.result_map, this);
-            }
-        }
         log("message received from" + aw.toString());
         this.receive_text_running = false;
+    }
+
+    @Override
+    public void run() {
+        log("started working");
+        process_text();
+        if(this.upper == null){
+            Res.print_map(this.result_map);
+        }
+        else {
+            this.upper.receive_result(this.result_map, this);
+        }
+        log("finished working");
     }
 
     void log(String s){

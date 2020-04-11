@@ -1,8 +1,10 @@
 package pckg;
 
+import pckg.workers.BookMan;
 import pckg.workers.ChapterMan;
 import pckg.workers.ParagraphMan;
 
+import java.awt.print.Book;
 import java.io.File;
 import java.io.IOException;
 import java.nio.charset.Charset;
@@ -17,8 +19,9 @@ public class Main {
         try {
             String content = new String(Files.readAllBytes(Paths.get(args[0])), StandardCharsets.UTF_8);
 //            ParagraphMan pm = new ParagraphMan(null, "pm1", content);
-            ChapterMan cm = new ChapterMan(null, "pm1", content);
-            Thread t = new Thread(cm);
+//            ChapterMan cm = new ChapterMan(null, "pm1", content);
+            BookMan bm = new BookMan(null, "bm1", content);
+            Thread t = new Thread(bm);
             t.start();
             t.join();
         } catch (IOException e) {
