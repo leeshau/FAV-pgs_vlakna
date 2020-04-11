@@ -15,9 +15,9 @@ abstract class AWorker implements Runnable{
 
     /**every class implements its way of processing the text that was passed on it
      * including the result being written to result_map*/
-    protected abstract void process_text(String text);
+    protected abstract void process_text();
 
-    AWorker(AWorker upper, String filename, String text) {
+    public AWorker(AWorker upper, String filename, String text) {
         this.upper = upper;
         this.filename = filename;
         this.text = text;
