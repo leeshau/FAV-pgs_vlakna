@@ -1,7 +1,6 @@
 package pckg.workers;
 
 import pckg.Res;
-
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
@@ -24,13 +23,15 @@ abstract class AWorker implements Runnable{
 
     AWorker(AWorker upper, String filename, String text) {
         this.upper = upper;
-        this.filename = filename;
+        String classname = this.getClass().getSimpleName();
+        this.filename = classname.substring(0, classname.length() - 3) + filename;
         this.text = text;
         this.result_map = new HashMap<>();
+//        log(this.get_full_filename(false));
     }
 
     /**@return full file name of the new text file to be exported*/
-    protected String get_full_filename() {
+    protected String get_full_filename(boolean export) {
         AWorker current_worker = this;
         LinkedList<String> names = new LinkedList<>();
         StringBuilder fullname = new StringBuilder();
@@ -40,9 +41,18 @@ abstract class AWorker implements Runnable{
             current_worker = current_worker.upper;
         }
         int names_size_fixed = names.size();
-        for (int i = 0; i < names_size_fixed; i++) {
-            fullname.append("/");
-            fullname.append(names.pop());
+        if(export) {
+            for (int i = names_size_fixed - 1; i >= 0; i--) {
+                fullname.append("/");
+                fullname.append(names.get(i).toLowerCase());
+            }
+            fullname.append(".txt");
+        } else {
+            for (int i = names_size_fixed - 1; i >= 0; i--) {
+                if(i != names_size_fixed - 1)
+                    fullname.append(" - ");
+                fullname.append(names.get(i));
+            }
         }
         return fullname.toString();
     }
@@ -54,7 +64,7 @@ abstract class AWorker implements Runnable{
 
     synchronized void receive_result(HashMap<String, Integer> map, AWorker aw) {
         this.receive_text_running = true;
-        log("receiving message from" + aw.toString());
+//        log("receiving message from" + aw.toString());
         if(map == null){
             err_log(" receive_result unsuccessful");
             return;
@@ -67,12 +77,13 @@ abstract class AWorker implements Runnable{
                 result_map.put(key, count + entry.getValue());
             }
         }
-        log("message received from" + aw.toString());
+//        log("message received from" + aw.toString());
         this.receive_text_running = false;
     }
 
     @Override
     public void run() {
+        if(this.text.matches("((\\r)?\\n)+")) return;
         log("started working");
         process_text();
         if(this.upper == null){

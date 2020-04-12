@@ -1,8 +1,6 @@
 package pckg;
 
-import pckg.workers.BookMan;
-import pckg.workers.ChapterMan;
-import pckg.workers.ParagraphMan;
+import pckg.workers.*;
 
 import java.awt.print.Book;
 import java.io.File;
@@ -20,8 +18,10 @@ public class Main {
             String content = new String(Files.readAllBytes(Paths.get(args[0])), StandardCharsets.UTF_8);
 //            ParagraphMan pm = new ParagraphMan(null, "pm1", content);
 //            ChapterMan cm = new ChapterMan(null, "pm1", content);
-            BookMan bm = new BookMan(null, "bm1", content);
-            Thread t = new Thread(bm);
+//            BookMan bm = new BookMan(null, "bm1", content);
+//            VolumeMan vm = new VolumeMan(null, "bm1", content);
+            AllMan am = new AllMan(null, "am1", content);
+            Thread t = new Thread(am);
             t.start();
             t.join();
         } catch (IOException e) {
