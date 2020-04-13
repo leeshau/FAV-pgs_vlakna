@@ -1,5 +1,6 @@
 package pckg;
 
+import java.io.*;
 import java.util.HashMap;
 import java.util.SortedSet;
 import java.util.TreeSet;
@@ -8,6 +9,9 @@ public class Res {
 
     /**the complete number of threads in the whole run*/
     public static final int WAIT_MILIS = 500;
+    public static final String SLASH = "\\";
+    public static final String BOOK_NAME = "lesmiserables";
+    public static final String EXPORT = "c:\\Users\\Lesa\\Documents\\fav\\PGS_SEM\\export\\";
 
     public static int thread_count_paragraphman = 0;
     public static final int LIMIT_PARAGRAPHMAN = 5;
