@@ -1,5 +1,7 @@
 package pckg.workers;
 
+import pckg.Res;
+
 /**takes text that includes chapter names and the paragraphs*/
 public class BookMan extends AWorker {
 
@@ -10,21 +12,16 @@ public class BookMan extends AWorker {
     @Override
     protected void process_text() {
         String[] chapters = this.text.split("CHAPTER [XIVL]+—[A-Z. —]+(\\r?\\n){3,}");
-        Thread[] cms = new Thread[chapters.length];
-        this.thread_count = cms.length;
-        for (int i = 0; i < chapters.length; i++) {
-            cms[i] = new Thread(new ChapterMan(this, "" + (i + 1), chapters[i]));
-            cms[i].start();
-        }
-
-        for (Thread bm : cms) {
+        this.thread_count = chapters.length;
+        int i = 0;
+        for (String s : chapters) {
             try {
-                bm.join();
-                this.thread_count--;
+                Res.SEM_CMAN.acquire();
+                new Thread(new ChapterMan(this, "" + ++i, s)).start();
             } catch (InterruptedException e) {
-                log("could not join thread");
                 e.printStackTrace();
             }
+            Res.SEM_CMAN.release();
         }
     }
 }

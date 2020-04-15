@@ -1,5 +1,7 @@
 package pckg.workers;
 
+import pckg.Res;
+
 /**takes pure text with no double line breakers*/
 public class ParagraphMan extends AWorker {
 
@@ -10,13 +12,14 @@ public class ParagraphMan extends AWorker {
     @Override
     protected void process_text() {
         String[] text_arr = text.split("[,. \"”“;]+|(\\r?\\n)");
-//        this.result_map.remove("\\r\\n");
         for (String word : text_arr){
-            //avoid empty lines and lines with [ ] __ -- etc
-            if(word.length() == 0 || !word.matches("[a-zA-Z]+|[0-9]+")) continue;
+            if(word.length() == 0 || !word.matches("[a-zA-Z]+|[0-9]+")) continue; //avoid empty lines and lines with [ ] __ -- etc
             String w = word.toLowerCase();
             int count = this.result_map.getOrDefault(w, 0);
             this.result_map.put(w, count + 1);
         }
+        print_res();
+        this.upper.receive_result(this.result_map, this);
+        this.upper.dec_thread();
     }
 }

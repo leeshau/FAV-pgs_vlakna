@@ -6,21 +6,18 @@ import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.Map;
+import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
 
 abstract class AWorker implements Runnable{
 
-    HashMap<String, Integer> result_map;
-    protected int thread_count = 0;
-    protected boolean receive_text_running = false;
-    protected static final int THREAD_LIMIT = 5;
+    Map<String, Integer> result_map;
 
-    /**his boss*/
-    AWorker upper;
+    /**his upper level*/
+    protected AWorker upper;
     String filename;
     String text;
+    int thread_count;
 
     /**every class implements its way of processing the text that was passed on it
      * including the result being written to result_map*/
@@ -31,14 +28,14 @@ abstract class AWorker implements Runnable{
         String classname = this.getClass().getSimpleName();
         this.filename = classname.substring(0, classname.length() - 3) + filename;
         this.text = text;
-        this.result_map = new HashMap<>();
+        this.result_map = new ConcurrentHashMap<>();
 //        log(this.get_full_filename(false));
     }
 
     /**@return full file name of the new text file to be exported
      * true, returns whole filename with no spaces and separated with '/' symbols, the last element is missing on purpose
      * false, return the content to save, whole path separated with ' - ' symbols and Ok at the end*/
-    protected String get_full_filename(boolean export, boolean state) {
+        private String get_full_filename(boolean export, boolean state) {
         AWorker current_worker = this;
         LinkedList<String> names = new LinkedList<>();
         StringBuilder fullname = new StringBuilder();
@@ -49,12 +46,12 @@ abstract class AWorker implements Runnable{
         }
         int names_size_fixed = names.size();
         if(export) {
-            fullname.append(Res.BOOK_NAME);
+            fullname.append(Res.conf.get("BOOK_NAME"));
             for (int i = names_size_fixed - 1; i >= 1; i--) {
-                fullname.append(Res.SLASH);
+                fullname.append(Res.conf.get("SLASH"));
                 fullname.append(names.get(i).toLowerCase());
             }
-            fullname.append(Res.SLASH + (state ? "state.txt" : names.get(0) + ".txt"));
+            fullname.append(Res.conf.get("SLASH") + ( state ? "state.txt" : (this.filename + Res.conf.get("SLASH") + this.filename + ".txt") ));
         } else {
             for (int i = names_size_fixed - 1; i >= 0; i--) {
                 if(i != names_size_fixed - 1)
@@ -70,54 +67,72 @@ abstract class AWorker implements Runnable{
         return this.getClass().getSimpleName() + " " + this.filename + ": ";
     }
 
-    synchronized void receive_result(HashMap<String, Integer> map, AWorker aw) {
-        this.receive_text_running = true;
-//        log("receiving message from" + aw.toString());
-        if(map == null){
-            err_log(" receive_result unsuccessful");
-            return;
-        }
-        synchronized (aw) {
-            /*merging maps*/
+    void receive_result(Map<String, Integer> map, AWorker aw) {
             for (Map.Entry<String, Integer> entry : map.entrySet()) {
-                String key = entry.getKey(); //TODO mozna pridej lowercase
-                int count = result_map.getOrDefault(key, 0);
-                result_map.put(key, count + entry.getValue());
+                String key = entry.getKey();
+                int count = this.result_map.getOrDefault(key, 0);
+                this.result_map.put(key, count + entry.getValue());
             }
-        }
-//        log("message received from" + aw.toString());
-        this.receive_text_running = false;
     }
 
     @Override
     public void run() {
-        if(this.text.matches("((\\r)?\\n)+")) return;
-//        log("started working");
+        if(this.text.matches("((\\r)?\\n)+") || this.text.length() == 0) {
+            this.upper.dec_thread();
+            return; //ignores empty lines
+        }
         process_text();
-        if(this.upper == null){
-//            Res.print_map(this.result_map);
-        }
-        else {
-            this.upper.receive_result(this.result_map, this);
-        }
-        print_state(null);
-//        log("finished working");
+    }
+
+    void dec_thread() {
+            this.thread_count--;
+            if(this.thread_count == 0){
+                this.print_res();
+                print_state(null);
+                if(this.upper != null) {
+                    this.upper.receive_result(this.result_map, this);
+                    this.upper.dec_thread();
+                }
+            }
     }
 
     /**prints files (path/state.txt) with OK statuses of analyzing*/
-    void print_state(String state){
-        String path = this.get_full_filename(true, true);
-        state = state == null ? (this.get_full_filename(false, false) + " OK\n") : state;
+    private void print_state(String state){
+        String path = this.get_full_filename(true, true); //complete path to a file ending with state.txt
+        state = state == null ? (this.get_full_filename(false, false) + " - OK\n") : state; //parameter can be null, it is used when writing state at its core level
         try {
-            File f = new File(Res.EXPORT + path);
-            f.getParentFile().mkdirs();
-            if(!f.exists()) f.createNewFile();
-            Files.write(Paths.get(Res.EXPORT + path), state.getBytes(), StandardOpenOption.APPEND);
+            File f = new File(Res.conf.get("EXPORT") + path); //only here for making the file and its directories
+            synchronized (this) {
+                f.getParentFile().mkdirs();
+                if (!f.exists()) f.createNewFile();
+                Files.write(Paths.get(Res.conf.get("EXPORT") + path), state.getBytes(), StandardOpenOption.APPEND);
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
         if(this.upper != null){
-            this.upper.print_state(state);
+            this.upper.print_state(state); //recursively writing the same state to all upper levels, state is same so there is no need to create it as we did in the first cycle here
+        }
+    }
+
+    void print_res() {
+        SortedSet<String> keys = new TreeSet<>(this.result_map.keySet());
+        StringBuilder fin = new StringBuilder("");
+        for(String key : keys){
+            fin.append(key + ": " + this.result_map.get(key) + "\n");
+        }
+        try {
+            File f = new File(Res.conf.get("EXPORT") + this.get_full_filename(true, false)); //only here for making the file and its directories
+            f.getParentFile().mkdirs();
+            if (!f.exists()) f.createNewFile();
+
+            BufferedWriter writer = new BufferedWriter(
+                    new FileWriter(Res.conf.get("EXPORT") + this.get_full_filename(true, false), true)  //Set true for append mode
+            );
+            writer.write(fin.toString());
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
