@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="PGS_SEM:jar" />
+    </artifacts-to-build>
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="8d438ffd-f422-4c84-9db6-0e645f9d758f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/src/pckg/workers/AWorker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/pckg/workers/AWorker.java" afterDir="false" />
@@ -20,8 +25,24 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/pckg/workers/AWorker.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="83" column="23" selection-start-line="83" selection-start-column="23" selection-end-line="83" selection-end-column="23" />
+            <state relative-caret-position="-417">
+              <caret line="102" column="61" selection-start-line="102" selection-start-column="61" selection-end-line="102" selection-end-column="61" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#6590#6591#0" expanded="true" />
+                <element signature="e#6661#6662#0" expanded="true" />
+                <element signature="e#6697#6698#0" expanded="true" />
+                <element signature="e#6768#6769#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/pckg/Res.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="646">
+              <caret line="38" column="25" selection-start-line="38" selection-start-column="25" selection-end-line="38" selection-end-column="25" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -30,25 +51,68 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/export/ lesmiserables/volume1/state.txt">
+        <entry file="file://$PROJECT_DIR$/src/pckg/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-509" />
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/export/ lesmiserables/lesmiserables/lesmiserables.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="11" column="7" lean-forward="true" selection-start-line="11" selection-start-column="7" selection-end-line="11" selection-end-column="7" />
+            <state relative-caret-position="323">
+              <caret line="19" column="21" selection-start-line="19" selection-start-column="21" selection-end-line="19" selection-end-column="21" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/export/ lesmiserables/state.txt">
+        <entry file="file://$PROJECT_DIR$/src/pckg/workers/AllMan.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2804" />
+            <state relative-caret-position="289">
+              <caret line="17" column="67" selection-start-line="17" selection-start-column="67" selection-end-line="17" selection-end-column="67" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/config.properties">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="119">
+              <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/pckg/workers/ParagraphMan.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="306">
+              <caret line="20" column="49" selection-start-line="20" selection-start-column="49" selection-end-line="20" selection-end-column="49" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/pckg/workers/ChapterMan.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="238">
+              <caret line="16" column="12" selection-start-line="16" selection-start-column="12" selection-end-line="16" selection-end-column="12" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/pckg/workers/BookMan.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="17" column="68" selection-start-line="17" selection-start-column="68" selection-end-line="17" selection-end-column="68" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/pckg/workers/VolumeMan.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="238">
+              <caret line="16" column="65" selection-start-line="16" selection-start-column="65" selection-end-line="16" selection-end-column="65" />
+            </state>
           </provider>
         </entry>
       </file>
@@ -116,22 +180,22 @@
         <option value="$PROJECT_DIR$/src/pckg/workers/Res.java" />
         <option value="$PROJECT_DIR$/export/lesmiserables/volume1/book1/chapter1/state.txt" />
         <option value="$PROJECT_DIR$/export/lesmiserables/state.txt" />
-        <option value="$PROJECT_DIR$/src/pckg/Res.java" />
         <option value="$PROJECT_DIR$/export/ lesmiserables/state.txt" />
         <option value="$PROJECT_DIR$/src/pckg/Main.java" />
+        <option value="$PROJECT_DIR$/src/pckg/Res.java" />
         <option value="$PROJECT_DIR$/config.properties" />
         <option value="$PROJECT_DIR$/src/pckg/workers/AllMan.java" />
-        <option value="$PROJECT_DIR$/src/pckg/workers/VolumeMan.java" />
-        <option value="$PROJECT_DIR$/src/pckg/workers/BookMan.java" />
         <option value="$PROJECT_DIR$/src/pckg/workers/ChapterMan.java" />
+        <option value="$PROJECT_DIR$/src/pckg/workers/BookMan.java" />
+        <option value="$PROJECT_DIR$/src/pckg/workers/VolumeMan.java" />
         <option value="$PROJECT_DIR$/src/pckg/workers/ParagraphMan.java" />
         <option value="$PROJECT_DIR$/src/pckg/workers/AWorker.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="444" />
-    <option name="y" value="245" />
+    <option name="x" value="453" />
+    <option name="y" value="82" />
     <option name="width" value="656" />
     <option name="height" value="456" />
   </component>
@@ -140,8 +204,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -158,7 +222,14 @@
               <item name="PGS_SEM" type="b2602c69:ProjectViewProjectNode" />
               <item name="PGS_SEM" type="462c0819:PsiDirectoryNode" />
               <item name="export" type="462c0819:PsiDirectoryNode" />
-              <item name=" lesmiserables" type="462c0819:PsiDirectoryNode" />
+              <item name="lesmiserables" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="PGS_SEM" type="b2602c69:ProjectViewProjectNode" />
+              <item name="PGS_SEM" type="462c0819:PsiDirectoryNode" />
+              <item name="export" type="462c0819:PsiDirectoryNode" />
+              <item name="lesmiserables" type="462c0819:PsiDirectoryNode" />
+              <item name="lesmiserables" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="PGS_SEM" type="b2602c69:ProjectViewProjectNode" />
@@ -186,6 +257,10 @@
   </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/export_sem_pgs" />
+    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RunDashboard">
@@ -238,7 +313,7 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.14498934" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15778251" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -247,7 +322,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32936078" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.16143012" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.18418202" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.31310943" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -271,7 +346,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/pckg/workers/ParagraphMan.java</url>
-          <line>22</line>
+          <line>21</line>
           <properties />
           <option name="timeStamp" value="22" />
         </line-breakpoint>
@@ -279,18 +354,92 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/export/ lesmiserables/Volume1/Book0/Chapter1/Paragraph2/Paragraph2.txt" />
-    <entry file="file://$PROJECT_DIR$/export/ lesmiserables/Volume1/Book0/Chapter1/Paragraph3/Paragraph3.txt" />
-    <entry file="file://$PROJECT_DIR$/export/ lesmiserables/Volume1/Book0/Chapter1/Paragraph4/Paragraph4.txt" />
-    <entry file="file://$PROJECT_DIR$/export/ lesmiserables/Volume1/Book0/Book0.txt" />
-    <entry file="file://$PROJECT_DIR$/export/ lesmiserables/Volume0/Book0/Book0.txt" />
-    <entry file="file://$PROJECT_DIR$/export/ lesmiserables/Volume0/Book0/Chapter1/Paragraph1/Paragraph1.txt" />
-    <entry file="file://$PROJECT_DIR$/export/ lesmiserables/Volume0/Book0/Chapter1/Chapter1.txt" />
-    <entry file="file://$PROJECT_DIR$/export/ lesmiserables/Volume0/Book0/Chapter2/Paragraph1/Paragraph1.txt" />
-    <entry file="file://$PROJECT_DIR$/export/ lesmiserables/Volume0/Book0/Chapter2/Chapter2.txt" />
-    <entry file="file://$PROJECT_DIR$/export/ lesmiserables/Volume0/Book0/Chapter2/Paragraph2/Paragraph2.txt" />
-    <entry file="file://$PROJECT_DIR$/export/ lesmiserables/Volume1/Book1/Chapter1/Paragraph1/Paragraph1.txt" />
-    <entry file="file://$PROJECT_DIR$/export/ lesmiserables/volume0/Volume0.txt" />
+    <entry file="file://$PROJECT_DIR$/export/ lesmiserables/volume1/book2/chapter2/state.txt" />
+    <entry file="file://$PROJECT_DIR$/export/ lesmiserables/volume1/book2/state.txt" />
+    <entry file="file://$PROJECT_DIR$/export/ lesmiserables/volume1/book2/chapter3/Chapter3.txt" />
+    <entry file="file://$PROJECT_DIR$/export/ lesmiserables/volume1/book2/chapter3/Paragraph1/Paragraph1.txt" />
+    <entry file="file://$PROJECT_DIR$/export/ lesmiserables/volume1/book2/chapter3/state.txt" />
+    <entry file="file://$PROJECT_DIR$/export/ lesmiserables/volume2/book2/chapter2/state.txt" />
+    <entry file="file://$PROJECT_DIR$/export/ lesmiserables/volume2/book1/chapter1/Chapter1.txt" />
+    <entry file="file://$PROJECT_DIR$/export/ lesmiserables/volume2/book2/Book2.txt" />
+    <entry file="file://$PROJECT_DIR$/export/ lesmiserables/volume2/book2/chapter2/Chapter2.txt" />
+    <entry file="file://$PROJECT_DIR$/export/ lesmiserables/volume2/book2/chapter2/Paragraph1/Paragraph1.txt" />
+    <entry file="file://$PROJECT_DIR$/export/ lesmiserables/volume1/book2/chapter2/Paragraph1/Paragraph1.txt" />
+    <entry file="file://$PROJECT_DIR$/export/ lesmiserables/volume1/book2/chapter2/Chapter2.txt" />
+    <entry file="file://$PROJECT_DIR$/export/ lesmiserables/volume1/book2/Book2.txt" />
+    <entry file="file://$PROJECT_DIR$/export/ lesmiserables/volume1/Volume1.txt" />
+    <entry file="file://$PROJECT_DIR$/export/ lesmiserables/volume2/Volume2.txt" />
+    <entry file="file://$PROJECT_DIR$/export/ lesmiserables/volume1/book2/chapter1/Paragraph1/Paragraph1.txt" />
+    <entry file="file://$PROJECT_DIR$/export/ lesmiserables/volume1/book2/chapter1/Chapter1.txt" />
+    <entry file="file://$PROJECT_DIR$/export/ lesmiserables/volume1/book2/chapter1/Paragraph2/Paragraph2.txt" />
+    <entry file="file://$PROJECT_DIR$/export/ lesmiserables/volume0/book1/chapter1/Paragraph1/Paragraph1.txt" />
+    <entry file="file://$PROJECT_DIR$/export/ lesmiserables/volume1/book1/chapter1/Paragraph2/Paragraph2.txt" />
+    <entry file="file://$PROJECT_DIR$/export/ lesmiserables/volume1/book1/chapter1/Paragraph3/Paragraph3.txt" />
+    <entry file="file://$PROJECT_DIR$/export/ lesmiserables/volume1/book1/chapter1/Paragraph4/Paragraph4.txt" />
+    <entry file="file://$PROJECT_DIR$/export/ lesmiserables/volume1/book1/chapter1/Paragraph5/Paragraph5.txt" />
+    <entry file="file://$PROJECT_DIR$/export/ lesmiserables/volume1/book1/chapter1/Chapter1.txt" />
+    <entry file="file://$PROJECT_DIR$/export/ lesmiserables/volume1/book1/Book1.txt" />
+    <entry file="file://$PROJECT_DIR$/export/ lesmiserables/volume1/book1/state.txt" />
+    <entry file="file://$PROJECT_DIR$/export/ lesmiserables/volume0/book1/Book1.txt" />
+    <entry file="file://$PROJECT_DIR$/export/ lesmiserables/volume0/book1/chapter1/Chapter1.txt" />
+    <entry file="file://$PROJECT_DIR$/export/ lesmiserables/volume1/state.txt" />
+    <entry file="file://$PROJECT_DIR$/export/ lesmiserables/lesmiserables/lesmiserables.txt" />
+    <entry file="file://$PROJECT_DIR$/export/ lesmiserables/state.txt" />
+    <entry file="file://$PROJECT_DIR$/export/ lesmiserables/volume2/state.txt" />
+    <entry file="file://$PROJECT_DIR$/export/ lesmiserables/volume1/book6/chapter6/state.txt" />
+    <entry file="file://$PROJECT_DIR$/export/lesmiserables/volume0/Volume0.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/export/lesmiserables/volume0/state.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/export/lesmiserables/volume0/book1/chapter1/Paragraph1/Paragraph1.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/export/lesmiserables/volume0/book1/chapter1/Chapter1.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/export/lesmiserables/volume0/book1/Book1.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/export/lesmiserables/volume2/book4/Book4.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/export/lesmiserables/volume1/book2/chapter4/Paragraph1/Paragraph1.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/export/lesmiserables/lesmiserables/lesmiserables.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/export/lesmiserables/state.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3029" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pckg/Res.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="646">
+          <caret line="38" column="25" selection-start-line="38" selection-start-column="25" selection-end-line="38" selection-end-column="25" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pckg/workers/AllMan.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="67" selection-start-line="17" selection-start-column="67" selection-end-line="17" selection-end-column="67" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/pckg/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
@@ -301,159 +450,44 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/export/ lesmiserables/volume1/Book2/chapter2/state.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/export/ lesmiserables/volume1/book2/state.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/export/ lesmiserables/volume1/book2/chapter3/Chapter3.txt" />
-    <entry file="file://$PROJECT_DIR$/export/ lesmiserables/volume1/book2/chapter3/Paragraph1/Paragraph1.txt" />
-    <entry file="file://$PROJECT_DIR$/export/ lesmiserables/volume1/book2/chapter3/state.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/export/ lesmiserables/volume2/Book2/chapter2/state.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="14" selection-start-line="8" selection-start-column="14" selection-end-line="8" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/export/ lesmiserables/volume2/book1/chapter1/Chapter1.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pckg/workers/AllMan.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="18" selection-start-line="15" selection-start-column="18" selection-end-line="15" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pckg/workers/BookMan.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="14" column="8" selection-start-line="14" selection-start-column="8" selection-end-line="14" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/pckg/workers/VolumeMan.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="14" column="18" selection-start-line="14" selection-start-column="18" selection-end-line="14" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/export/ lesmiserables/volume2/book2/Book2.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/export/ lesmiserables/volume2/book2/chapter2/Chapter2.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/export/ lesmiserables/volume2/book2/chapter2/Paragraph1/Paragraph1.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/export/ lesmiserables/volume1/book2/chapter2/Paragraph1/Paragraph1.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pckg/workers/ChapterMan.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="14" column="16" selection-start-line="14" selection-start-column="16" selection-end-line="14" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/export/ lesmiserables/volume1/book2/chapter2/Chapter2.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/export/ lesmiserables/volume1/book2/Book2.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret lean-forward="true" />
+        <state relative-caret-position="238">
+          <caret line="16" column="65" selection-start-line="16" selection-start-column="65" selection-end-line="16" selection-end-column="65" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/pckg/workers/ParagraphMan.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="21" column="57" selection-start-line="21" selection-start-column="57" selection-end-line="21" selection-end-column="57" />
+        <state relative-caret-position="306">
+          <caret line="20" column="49" selection-start-line="20" selection-start-column="49" selection-end-line="20" selection-end-column="49" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/export/ lesmiserables/volume1/Volume1.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/export/ lesmiserables/volume2/Volume2.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/export/ lesmiserables/volume1/book2/chapter1/Paragraph1/Paragraph1.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/export/ lesmiserables/volume1/book2/chapter1/Chapter1.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/export/ lesmiserables/volume1/book2/chapter1/Paragraph2/Paragraph2.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/export/ lesmiserables/volume0/book1/chapter1/Paragraph1/Paragraph1.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/export/ lesmiserables/volume1/book1/chapter1/Paragraph2/Paragraph2.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/export/ lesmiserables/volume1/book1/chapter1/Paragraph3/Paragraph3.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/export/ lesmiserables/volume1/book1/chapter1/Paragraph4/Paragraph4.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/export/ lesmiserables/volume1/book1/chapter1/Paragraph5/Paragraph5.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/export/ lesmiserables/volume1/book1/chapter1/Chapter1.txt">
+    <entry file="file://$PROJECT_DIR$/src/pckg/workers/ChapterMan.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-50" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/export/ lesmiserables/volume1/book1/Book1.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-611" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/export/ lesmiserables/volume1/book1/state.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/export/ lesmiserables/volume0/book1/Book1.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/export/ lesmiserables/volume0/book1/chapter1/Chapter1.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/export/ lesmiserables/volume1/state.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-509" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/export/ lesmiserables/lesmiserables/lesmiserables.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="11" column="7" lean-forward="true" selection-start-line="11" selection-start-column="7" selection-end-line="11" selection-end-column="7" />
+        <state relative-caret-position="238">
+          <caret line="16" column="12" selection-start-line="16" selection-start-column="12" selection-end-line="16" selection-end-column="12" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/export/ lesmiserables/state.txt">
+    <entry file="file://$PROJECT_DIR$/src/pckg/workers/BookMan.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2804" />
+        <state relative-caret-position="255">
+          <caret line="17" column="68" selection-start-line="17" selection-start-column="68" selection-end-line="17" selection-end-column="68" />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/pckg/workers/AWorker.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="83" column="23" selection-start-line="83" selection-start-column="23" selection-end-line="83" selection-end-column="23" />
+        <state relative-caret-position="-417">
+          <caret line="102" column="61" selection-start-line="102" selection-start-column="61" selection-end-line="102" selection-end-column="61" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#6590#6591#0" expanded="true" />
+            <element signature="e#6661#6662#0" expanded="true" />
+            <element signature="e#6697#6698#0" expanded="true" />
+            <element signature="e#6768#6769#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -461,9 +495,79 @@
   </component>
   <component name="masterDetails">
     <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <last-edited>PGS_SEM:jar</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+                <option value="0.5" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
       <state key="ProjectJDKs.UI">
         <settings>
           <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
           <splitter-proportions>
             <option name="proportions">
               <list>

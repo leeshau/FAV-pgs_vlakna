@@ -11,11 +11,14 @@ import java.util.concurrent.ConcurrentHashMap;
 
 abstract class AWorker implements Runnable{
 
+    /**map with results, a word => word count*/
     Map<String, Integer> result_map;
 
     /**his upper level*/
     protected AWorker upper;
+    /**one word description for the object used in toString, serves also as a directory name*/
     String filename;
+    /**text from input assigned to this object*/
     String text;
     int thread_count;
 
@@ -29,12 +32,12 @@ abstract class AWorker implements Runnable{
         this.filename = classname.substring(0, classname.length() - 3) + filename;
         this.text = text;
         this.result_map = new ConcurrentHashMap<>();
-//        log(this.get_full_filename(false));
     }
 
-    /**@return full file name of the new text file to be exported
-     * true, returns whole filename with no spaces and separated with '/' symbols, the last element is missing on purpose
-     * false, return the content to save, whole path separated with ' - ' symbols and Ok at the end*/
+    /**@return full file name of the new text file to be exported (if export true, else generates path to state.txt to add another line with 'OK'
+     * true export + true state, returns whole filename with no spaces and separated with '/' symbols without the last element, ended with /state.txt
+     * true export + false state, returns whole filename with no spaces and separated with '/' symbols, used for exporting the results
+     * false export, return the content to save, whole path separated with ' - ' symbols and Ok at the end*/
         private String get_full_filename(boolean export, boolean state) {
         AWorker current_worker = this;
         LinkedList<String> names = new LinkedList<>();
@@ -67,45 +70,56 @@ abstract class AWorker implements Runnable{
         return this.getClass().getSimpleName() + " " + this.filename + ": ";
     }
 
-    void receive_result(Map<String, Integer> map, AWorker aw) {
+    /**inserts passed map into the map of this object*/
+    void receive_result(Map<String, Integer> map) {
             for (Map.Entry<String, Integer> entry : map.entrySet()) {
                 String key = entry.getKey();
-                int count = this.result_map.getOrDefault(key, 0);
-                this.result_map.put(key, count + entry.getValue());
+                synchronized (this.result_map) {
+                    int count = this.result_map.getOrDefault(key, 0);
+                    this.result_map.put(key, count + entry.getValue());
+                }
             }
     }
 
     @Override
     public void run() {
         if(this.text.matches("((\\r)?\\n)+") || this.text.length() == 0) {
-            this.upper.dec_thread();
-            return; //ignores empty lines
+            this.upper.dec_thread(); //ignores empty lines and so decreases thread count to its upper, as it ends itself with no result
+            return;
         }
         process_text();
     }
 
+    /**decreasing thread count
+     * everytime this is called, decreases the objects thread count and check if there are any threads left
+     * if there is no thread left, that means the object is finished with all results in tact.
+     * So it prints the results as well as state and sends the results to the its 'upper' (if it exists) */
     void dec_thread() {
             this.thread_count--;
             if(this.thread_count == 0){
                 this.print_res();
                 print_state(null);
                 if(this.upper != null) {
-                    this.upper.receive_result(this.result_map, this);
+                    this.upper.receive_result(this.result_map);
                     this.upper.dec_thread();
+                }
+                if(this instanceof AllMan) {
+                    Res.shutdown_pools();
                 }
             }
     }
 
     /**prints files (path/state.txt) with OK statuses of analyzing*/
-    private void print_state(String state){
+    void print_state(String state){
         String path = this.get_full_filename(true, true); //complete path to a file ending with state.txt
         state = state == null ? (this.get_full_filename(false, false) + " - OK\n") : state; //parameter can be null, it is used when writing state at its core level
         try {
-            File f = new File(Res.conf.get("EXPORT") + path); //only here for making the file and its directories
+            String filename = (Res.conf.get("EXPORT") + path).replace(" ", "");
+            File f = new File(filename); //only here for making the file and its directories
             synchronized (this) {
                 f.getParentFile().mkdirs();
                 if (!f.exists()) f.createNewFile();
-                Files.write(Paths.get(Res.conf.get("EXPORT") + path), state.getBytes(), StandardOpenOption.APPEND);
+                Files.write(Paths.get(filename), state.getBytes(), StandardOpenOption.APPEND);
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -115,27 +129,31 @@ abstract class AWorker implements Runnable{
         }
     }
 
+    /**prints result line to line 'word word_count\n'*/
     void print_res() {
-        SortedSet<String> keys = new TreeSet<>(this.result_map.keySet());
+        SortedSet<String> keys = new TreeSet<>(this.result_map.keySet()); //to be sorted
         StringBuilder fin = new StringBuilder("");
         for(String key : keys){
             fin.append(key + ": " + this.result_map.get(key) + "\n");
         }
         try {
-            File f = new File(Res.conf.get("EXPORT") + this.get_full_filename(true, false)); //only here for making the file and its directories
-            f.getParentFile().mkdirs();
-            if (!f.exists()) f.createNewFile();
-
+            String filename = (Res.conf.get("EXPORT") + this.get_full_filename(true, false)).replace(" ", "");
+            synchronized (this) {
+            File f = new File(filename); //only here for making the file and its directories
+                f.getParentFile().mkdirs();
+                if (!f.exists()) f.createNewFile();
             BufferedWriter writer = new BufferedWriter(
-                    new FileWriter(Res.conf.get("EXPORT") + this.get_full_filename(true, false), true)  //Set true for append mode
+                    new FileWriter(filename, true)  //Set true for append mode
             );
-            writer.write(fin.toString());
-            writer.close();
+                writer.write(fin.toString());
+                writer.close();
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
+    /**log methods used for debugging*/
     void log(String s){
         System.out.println("Log: " + this.toString() + " " + s);
     }

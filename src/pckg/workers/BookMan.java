@@ -15,13 +15,7 @@ public class BookMan extends AWorker {
         this.thread_count = chapters.length;
         int i = 0;
         for (String s : chapters) {
-            try {
-                Res.SEM_CMAN.acquire();
-                new Thread(new ChapterMan(this, "" + ++i, s)).start();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-            Res.SEM_CMAN.release();
+            Res.POOL_CMAN.submit(new ChapterMan(this, "" + ++i, s));
         }
     }
 }

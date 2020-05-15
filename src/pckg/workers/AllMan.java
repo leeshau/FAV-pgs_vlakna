@@ -15,13 +15,7 @@ public class AllMan extends AWorker{
         this.thread_count = volumes.length;
         int i = 0;
         for (String s : volumes) {
-            try {
-                Res.SEM_VMAN.acquire();
-                new Thread(new VolumeMan(this, "" + i++, s)).start(); //Volumes start from 0 because of preface
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-            Res.SEM_VMAN.release();
+            Res.POOL_VMAN.submit(new VolumeMan(this, "" + i++, s));
         }
     }
 }

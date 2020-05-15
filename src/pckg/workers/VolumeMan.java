@@ -14,13 +14,7 @@ public class VolumeMan extends AWorker {
         this.thread_count = books.length;
         int i = 0;
         for (String s : books) {
-            try {
-                Res.SEM_BMAN.acquire();
-                new Thread(new BookMan(this, "" + ++i, s)).start();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-            Res.SEM_BMAN.release();
+            Res.POOL_BMAN.submit(new BookMan(this, "" + ++i, s));
         }
     }
 }
